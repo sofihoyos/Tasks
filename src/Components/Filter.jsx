@@ -1,29 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { ButtonFilter } from './buttonFilter'
 
 export const Filter = () => {
-  return (
-    <section className='flex justify-center mb-6 py-4'>
-        <input 
-            type="button" 
-            name='option'  
-            value="All" 
-            className='px-4 py-2 mx-1 rounded-md border border-purple-400'
-        />
-        
-        <input 
-            type="button" 
-            name='option'  
-            value="Pending" 
-            className='px-4 py-2 mx-1 rounded-md border border-purple-400'
-        />
+  const [filter, setFilter] = useState("all");
+  const [tasks, setTasks] = useState([]);
 
-        <input 
-            type="button" 
-            name='option' 
-            value="Completed" 
-            className='px-4 py-2 mx-1 rounded-md border border-purple-400'
-        />
-        
-      </section>
+  return (
+    <section className='flex justify-center mb-6 py-4 gap-5'>
+      <ButtonFilter type="all" filter={filter} setFilter={setFilter}>All</ButtonFilter>
+      <ButtonFilter type="pending" filter={filter} setFilter={setFilter}>Pending</ButtonFilter>
+      <ButtonFilter type="completed" filter={filter} setFilter={setFilter}>Completed</ButtonFilter>
+    </section>
   )
 }

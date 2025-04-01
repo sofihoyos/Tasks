@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { contextTask } from '../context/context';
+import { useContextTask } from '../context/context';
 
 export const Form = () => {
     //Montaje: El componente se añade al DOM.
@@ -7,7 +7,7 @@ export const Form = () => {
     //Desmontaje: el componente se elimina del DOM
 
 
-    const { title, setTitle, description, setDescripcion, tasks, setTasks } = useContext(contextTask)
+    const { title, setTitle, description, setDescription, tasks, setTasks } = useContextTask();
 
     const addTask = (e) => {
   
@@ -28,9 +28,9 @@ export const Form = () => {
       }
     }
   
-    useEffect(() => {
-      alert('Tarea creada')
-    }, [tasks])
+    // useEffect(() => {
+    //   alert('Tarea creada')
+    // }, [tasks])
 
   return (
     <form onSubmit={addTask} >
@@ -38,13 +38,13 @@ export const Form = () => {
             type="text"  
             placeholder='Nombre de la tarea' 
             value={title}
-            onChange={(e) => setTitle(e.target.value.trim())}
+            onChange={(e) => setTitle(e.target.value)}
             className='w-full px-3 py-2 border border-purple-400 rounded-md mb-4 b'
         />
         <textarea
             placeholder='Descripción' 
             value={description}
-            onChange={(e) => setDescripcion(e.target.value.trim())}
+            onChange={(e) => setDescription(e.target.value)}
             className='w-full px-3 py-2 border border-purple-400 rounded-md mb-4 '
         />
 
